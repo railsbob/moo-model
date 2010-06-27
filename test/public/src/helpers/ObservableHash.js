@@ -12,9 +12,8 @@ Copyright:
 
 
 var ObservableHash = new Class({
-  
   Extends:HashClass,
   Implements:Events
-  
 });
+
 ObservableHash.implement(ObservableData);

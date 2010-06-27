@@ -1,8 +1,10 @@
 module("MooModel.Base");
 
 test("attr, attributes, changes, reset, save, destroy", function(){
-  var base = new MooModel.Base({ title: "Infinity" });
-  same(base.attributes, { title: "Infinity" });
+  var base = new MooModel.Base({ id: 101, title: "Infinity" });
+
+  same(base.get('title'), "Infinity");
+  same(base.get('id'), 101)
 });
 
 test("classmethods", function(){

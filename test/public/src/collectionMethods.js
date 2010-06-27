@@ -10,7 +10,7 @@ MooModel.CollectionMethods = {
   detect: function(id) {
     var model;
     $each(this.collection, function(i) {
-      if (i.id() == id) {
+      if (i.get('id') == id) {
          model = i;
       }
     });
