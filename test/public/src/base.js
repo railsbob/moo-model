@@ -7,14 +7,14 @@ MooModel.Base = new Class({
   },
 
   get: function(key){
-    return this.attributes.$data.get(key)
+    return this.attributes.get(key)
   },
 
   set: function(key, value){
-    return this.attributes.$data.set(key, value)
+    return this.attributes.set(key, value)
   },
 
   id: function(){
-    return this.attributes.id || null
+    return this.get('id') || null
   }
 });

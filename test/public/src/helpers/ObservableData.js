@@ -17,15 +17,16 @@ var ObservableData = {
   set: function(key,value){
     if(this.get(key) == value)
       return this;
-    
-    if(this.has && !this.has(key))
-    this.fireEvent('add:'+key, [value, key])
-      .fireEvent('add', [value, key]);
-    
+
+    if(this.has && !this.has(key)){
+      this.fireEvent('add:'+key, [value, key])
+        .fireEvent('add', [value, key]);
+    }
+
     this.fireEvent('set:'+key, [value, key])
       .fireEvent('set', [value, key]);
-    
-    this.parent(key,value);
+
+    this.$data.set(key,value);
     return this;
   },
   
@@ -33,8 +34,7 @@ var ObservableData = {
   get: function(key){
     this.fireEvent('get:'+key, key)
       .fireEvent('get', key);
-    
-    return this.parent(key);
+    return this.$data.get(key)
   },
   
   // return the ObservableData
