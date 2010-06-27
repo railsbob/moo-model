@@ -10,9 +10,8 @@ Copyright:
 
 */
 
-
 var ObservableData = {
-  
+
   // return the ObservableData
   set: function(key,value){
     if(this.get(key) == value)
@@ -29,52 +28,48 @@ var ObservableData = {
     this.$data.set(key,value);
     return this;
   },
-  
+
   // return the value
   get: function(key){
     this.fireEvent('get:'+key, key)
       .fireEvent('get', key);
     return this.$data.get(key)
   },
-  
+
   // return the ObservableData
   erase: function(key){
     this.fireEvent('erase:'+key, key)
       .fireEvent('erase', key);
-    
-    this.parent(key);
+
+    this.$data.erase(key);
     return this;
   },
-  
-  
-  
+
   observeAdd: function(key,fn){
     if($type(key)=='function')
       return this.addEvent('add', key);
     
     return this.addEvent('add:'+key, fn)
   },
-  
+
   observeGet: function(key,fn){
     if($type(key)=='function')
       return this.addEvent('get', key);
     
     return this.addEvent('get:'+key, fn)
   },
-  
+
   observeSet: function(key,fn){
     if($type(key)=='function')
       return this.addEvent('set', key);
-    
+
     return this.addEvent('set:'+key, fn)
   },
-  
+
   observeErase: function(key,fn){
     if($type(key)=='function')
       return this.addEvent('erase', key);
-    
+
     return this.addEvent('erase:'+key, fn)
   }
-  
-  
 };

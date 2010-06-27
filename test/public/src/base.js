@@ -14,6 +14,10 @@ MooModel.Base = new Class({
     return this.attributes.set(key, value)
   },
 
+  erase: function(key){
+    return this.attributes.erase(key)
+  },
+
   id: function(){
     return this.get('id') || null
   }
