@@ -4,6 +4,7 @@ MooModel.Base = new Class({
 
   initialize: function(attrs){
     this.attributes = new ObservableHash(attrs);
+    this.errors = new MooModel.Errors();
   },
 
   get: function(key){

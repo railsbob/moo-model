@@ -1,6 +1,12 @@
 MooModel.Errors = new Class({
-  add: function(atttribute, message, options){
-    var message = $defined(message) ? message : "invalid";
+  initialize: function(){
+    this.errors = {}
+  },
+
+  add: function(attribute, message, options){
+    var message = $defined(message) ? message : "is invalid";
+    
+    if (!this.errors[attribute]) this.errors[attribute] = [];
     this.errors[attribute].push(message);
   },
 
