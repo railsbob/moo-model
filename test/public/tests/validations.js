@@ -5,7 +5,8 @@ var Person = new Class({
   Validations: [
                 { attribute: 'name', type: 'presence', message: "is required" },
                 { attribute: 'number', type: 'numericality', required: false, message: "should be a number" },
-                { attribute: 'age', type: 'numericality', required: true, message: 'should be a number'}
+                { attribute: 'age', type: 'numericality', required: true, message: 'should be a number' },
+                { attribute: 'employeeNumber', type: 'custom', required: false, regex: new RegExp(/^\d{5}$/), message: 'should be a 5 digit number' }
                ]
 });
 
@@ -47,4 +48,13 @@ test('Numeric attributes can be required or optional', function(){
   person.set('number', null);
   same(person.valid(), true);
   same(person.errors.on('number'), []);
+});
+
+test('It should validate the attributes with a custom validation rule', function(){
+  person = new Person({id: 1, name: 'railsbob', description: "lorem", number: 100, age: 25, employeeNumber: '11111' });
+
+  same(person.valid(), true);
+  person.set('employeeNumber', '123ASDF');
+  same(person.valid(), false);
+  same(person.errors.on('employeeNumber'), ['should be a 5 digit number']);
 });

@@ -19,6 +19,8 @@ MooModel.Validations = new Class({
         break;
         case 'numericality': (new MooModel.Validations.Numericality(object)).validate(i);
         break;
+        case 'custom': (new MooModel.Validations.Custom(object)).validate(i);
+        break;
       }
     })
   },
