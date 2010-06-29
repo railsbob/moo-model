@@ -6,16 +6,21 @@ MooModel.Validations = new Class({
 
   valid: function(){
     this.errors.clear();
-    _run_validate_callbacks();
-    this.error.empty();
+    this._run_validate_callbacks();
+    return this.errors.empty();
   },
 
   _run_validate_callbacks: function(){
-    // javascript being event driven callbacks
-    // should in theory be easy enough
-    
-    // before validation
-    // after validation
+    var object = this;
+    validations = object.constructor.validations;
+    $each(validations, function(i){
+      switch(i.type){
+        case 'presence': (new MooModel.Validations.Presence(object)).validate(i);
+        break;
+        case 'number': console.log('num');
+        break;
+      }
+    })
   },
 
   invalid: function(){

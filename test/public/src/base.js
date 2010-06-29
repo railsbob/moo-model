@@ -2,9 +2,11 @@ MooModel.Base = new Class({
   ClassMethods: $merge(MooModel.CollectionMethods, MooModel.RestPersistance),
   Implements: MooModel.Validations,
 
+  Validations: {},
+
   initialize: function(attrs){
     this.attributes = new ObservableHash(attrs);
-    this.errors = new MooModel.Errors();
+    this.errors = new MooModel.Errors(this);
   },
 
   get: function(key){

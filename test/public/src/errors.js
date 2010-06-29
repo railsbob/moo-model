@@ -1,6 +1,7 @@
 MooModel.Errors = new Class({
-  initialize: function(){
-    this.errors = {}
+  initialize: function(model){
+    this.errors = {};
+    this.model = model;
   },
 
   add: function(attribute, message, options){
@@ -34,5 +35,9 @@ MooModel.Errors = new Class({
     var count = 0;
     this.each(function() { count++; });
     return count;
+  },
+  
+  empty: function(){
+    return this.size() == 0
   }
 })
