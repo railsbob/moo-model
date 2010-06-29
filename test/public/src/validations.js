@@ -17,7 +17,7 @@ MooModel.Validations = new Class({
       switch(i.type){
         case 'presence': (new MooModel.Validations.Presence(object)).validate(i);
         break;
-        case 'number': console.log('num');
+        case 'numericality': (new MooModel.Validations.Numericality(object)).validate(i);
         break;
       }
     })
