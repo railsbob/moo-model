@@ -21,6 +21,12 @@ MooModel.Validations = new Class({
         break;
         case 'custom': (new MooModel.Validations.Custom(object)).validate(i);
         break;
+        case 'within': (new MooModel.Validations.Within(object)).validate(i);
+        break;
+        case 'inclusion': (new MooModel.Validations.Inclusion(object)).validate(i);
+        break;
+        case 'exclusion': (new MooModel.Validations.Exclusion(object)).validate(i);
+        break;
       }
     })
   },
