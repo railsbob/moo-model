@@ -23,5 +23,9 @@ MooModel.Base = new Class({
 
   id: function(){
     return this.get('id') || null
+  },
+
+  resource_path: function(){
+    return this.constructor.resource_path(this);
   }
 });

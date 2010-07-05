@@ -1,6 +1,7 @@
 module("MooModel.Base");
 
 var Post = new Class({
+  Name: 'post',
   Extends: MooModel.Base,
   ClassMethods: MooModel.Base.__classMethods,
   

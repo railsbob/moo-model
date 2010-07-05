@@ -1,6 +1,7 @@
 test('It should validate the attributes with a custom validation rule', function(){
 
   var Person = new Class({
+    Name: 'person',
     Extends: MooModel.Base,
     ClassMethods: MooModel.Base.__classMethods,
 

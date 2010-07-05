@@ -1,6 +1,7 @@
 test('It should validate the numeric attribute with a given range', function(){
 
   var Person = new Class({
+    Name: 'person',
     Extends: MooModel.Base,
     ClassMethods: MooModel.Base.__classMethods,
 

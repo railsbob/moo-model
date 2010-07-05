@@ -1,5 +1,6 @@
 test('It should validate inclusion of attributes', function(){
   var Person = new Class({
+    Name: 'person',
     Extends: MooModel.Base,
     ClassMethods: MooModel.Base.__classMethods,
 
