@@ -2,7 +2,6 @@ test('It should validate exclusion of attributes', function(){
   var Person = new Class({
     Name: 'person',
     Extends: MooModel.Base,
-    ClassMethods: MooModel.Base.__classMethods,
 
     Validations: [{ attribute: 'skills', type: 'exclusion', options: ['php'], message: 'is not allowed' }]
   });

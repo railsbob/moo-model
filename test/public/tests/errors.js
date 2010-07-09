@@ -20,10 +20,10 @@ test("Test functions [add, all, clear, each, on, size] on object.errors", functi
   post.errors.each(function(){
     count++;
   });
-  same(count, 2);
+  equals(count, 2);
 
-  same(post.errors.size(), 2);
+  equals(post.errors.size(), 2);
 
   post.errors.clear();
-  same(post.errors.size(), 0);
+  equals(post.errors.size(), 0);
 });

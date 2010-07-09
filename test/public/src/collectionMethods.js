@@ -1,8 +1,10 @@
 MooModel.CollectionMethods = {
   collection: [],
   add: function(object){
-    this.collection.push(object);
-    // should check if it already exists
+    existing_object = this.detect(object.id());
+    if(!existing_object){
+      this.collection.push(object);
+    }
   },
   all: function(){
     return this.collection;

@@ -13,22 +13,24 @@ MooModel.Validations = new Class({
   _run_validate_callbacks: function(){
     var object = this;
     validations = object.constructor.validations;
-    $each(validations, function(i){
-      switch(i.type){
-        case 'presence': (new MooModel.Validations.Presence(object)).validate(i);
-        break;
-        case 'numericality': (new MooModel.Validations.Numericality(object)).validate(i);
-        break;
-        case 'custom': (new MooModel.Validations.Custom(object)).validate(i);
-        break;
-        case 'within': (new MooModel.Validations.Within(object)).validate(i);
-        break;
-        case 'inclusion': (new MooModel.Validations.Inclusion(object)).validate(i);
-        break;
-        case 'exclusion': (new MooModel.Validations.Exclusion(object)).validate(i);
-        break;
-      }
-    })
+    if(validations != undefined){
+      $each(validations, function(i){
+        switch(i.type){
+          case 'presence': (new MooModel.Validations.Presence(object)).validate(i);
+          break;
+          case 'numericality': (new MooModel.Validations.Numericality(object)).validate(i);
+          break;
+          case 'custom': (new MooModel.Validations.Custom(object)).validate(i);
+          break;
+          case 'within': (new MooModel.Validations.Within(object)).validate(i);
+          break;
+          case 'inclusion': (new MooModel.Validations.Inclusion(object)).validate(i);
+          break;
+          case 'exclusion': (new MooModel.Validations.Exclusion(object)).validate(i);
+          break;
+        }
+      });
+    }
   },
 
   invalid: function(){

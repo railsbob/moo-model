@@ -12,6 +12,6 @@ MooModel.RestPersistance = {
   },
 
   resource_path: function(resource){
-    return [pluralize(resource.constructor.model_name), resource.id()].join('/')
+    return ['', pluralize(resource.constructor.model_name), resource.id()].join('/')
   }
 };

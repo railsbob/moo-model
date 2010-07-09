@@ -3,8 +3,8 @@ test("Naming", function(){
   var Person = new Class({
     Name: 'person',
     Extends: MooModel.Base,
-    ClassMethods: MooModel.Base.__classMethods
+    ClassMethods: {}
   });
 
-  same(Person.model_name, 'person');
+  equals(Person.model_name, 'person');
 });
