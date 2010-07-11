@@ -28,7 +28,11 @@ MooModel.InstanceMethods = {
     return this.constructor.resource_path(this);
   },
 
-  save: function(callback) {
+  collection_path: function(){
+    return this.constructor.collection_path(this);
+  },
+
+  save: function(callback){
     if (this.valid()) {
       var method = this.new_record() ? "create" : "update";
       this.call_persist_method(method, callback);
@@ -38,7 +42,17 @@ MooModel.InstanceMethods = {
     return this;
   },
 
-  call_persist_method: function(method, callback){
+  destroy: function(callback){
+    this.call_persist_method("destroy", callback);
+  },
 
+  call_persist_method: function(method, callback){
+    if(method == 'create'){
+      this.constructor.add(this);
+      MooModel.RestPersistance.create(this, callback);
+    }else if(method == 'destroy'){
+      this.constructor.remove(this.id());
+      MooModel.RestPersistance.destroy(this, callback);
+    }
   }
-}
+};

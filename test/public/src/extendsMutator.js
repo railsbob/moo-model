@@ -8,7 +8,6 @@ Class.Mutators.Extends = function(parent){
     return previous.apply(this, arguments);
   }.protect());
 
-  base_methods = $merge(MooModel.CollectionMethods, MooModel.RestPersistance);
-  this.extend(base_methods);
+  this.extend(parent.__classMethods);
 };
 

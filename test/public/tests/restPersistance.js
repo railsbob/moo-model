@@ -11,14 +11,13 @@ test('REST persistance: it should return a resource path based on model_name', f
 test('REST persistance: create', function(){
   person = new Person({ name: 'anup', nickname: 'railsbob' });
   same(person.new_record(), true);
-
   person.save(function(status){
-    
   });
   
 });
 
 test('REST persistance: destroy', function(){
-  
+  person = new Person({ id: 90 });
+  person.destroy();
 });
 

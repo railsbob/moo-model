@@ -1,14 +1,23 @@
 MooModel.CollectionMethods = {
   collection: [],
   add: function(object){
-    existing_object = this.detect(object.id());
-    if(!existing_object){
-      this.collection.push(object);
+    if(!object.new_record()){
+      existing_object = this.detect(object.id());
+      if(!existing_object){
+        this.collection.push(object);
+      }
     }
   },
+
+  remove: function(id){
+    object = this.detect(id);
+    this.collection.erase(object);
+  },
+
   all: function(){
     return this.collection;
   },
+
   detect: function(id) {
     var model;
     $each(this.collection, function(i) {

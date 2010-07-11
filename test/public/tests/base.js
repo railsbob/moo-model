@@ -23,3 +23,11 @@ test("it should add to collection only once", function(){
   Post.add(post);
   equals(Post.collection.length, 1);
 });
+
+test("it should remove an element from the collection", function(){
+  var post = new Post({id: 1, name: "bob"});
+  Post.add(post);
+  equals(Post.collection.length, 1);
+  post.destroy();
+  equals(Post.collection.length, 0);
+});
