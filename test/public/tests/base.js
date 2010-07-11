@@ -3,7 +3,6 @@ module("MooModel.Base");
 var Post = new Class({
   Name: 'post',
   Extends: MooModel.Base,
-  ClassMethods: {},
   
   Validations: {
     name: 'size', required: true, message: "must set the size of the egg"

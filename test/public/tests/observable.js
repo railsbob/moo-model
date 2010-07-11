@@ -1,7 +1,6 @@
 var Post = new Class({
   Name: 'post',
-  Extends: MooModel.Base,
-  ClassMethods: {}
+  Extends: MooModel.Base
 });
 var post = new Post({id: 1, name: "bean", description: "lorem"});
 
