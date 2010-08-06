@@ -6,14 +6,13 @@ require 'closure-compiler'
 require 'sprockets'
 
 class Bundle
-  # DIST_DIR = 'dist'
   DIST_DIR = "dist"
   SRC_DIR = 'src'
 
   attr_reader :path
 
   def initialize
-    @path = "#{SRC_DIR}/MooModal.js"
+    @path = "#{SRC_DIR}/moo-model.js"
   end
 
   def bundle!
@@ -29,7 +28,7 @@ class Bundle
   end
 
   def bundle_path
-    "#{DIST_DIR}/MooModel-#{version}.js"
+    "#{DIST_DIR}/moo-model-#{version}.js"
   end
 
   def minify!

@@ -18,6 +18,7 @@ test('REST persistance: create', function(){
 
 test('REST persistance: destroy', function(){
   person = new Person({ id: 90 });
+  console.log(Person.prototype)
   person.destroy();
 });
 
