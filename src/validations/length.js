@@ -7,21 +7,20 @@ MooModel.Validations.Length = new Class({
       return;
     value = this.object.get(validation.attribute).length;
     if(validation.is != undefined){
-      if(value != validation.is){
-        this.object.errors.add(validation.attribute, (validation.message || "has invalid length"), {});
-      }
+      if(value != validation.is)
+        add_error(this, validation.message);
     }else if(validation.minimum != undefined){
-      if(value < validation.minimum){
-        this.object.errors.add(validation.attribute, (validation.message || "has invalid length"), {});
-      }
+      if(value < validation.minimum)
+        add_error(this, validation.message);
     }else if(validation.maximum != undefined){
-      if(value > validation.maximum){
-        this.object.errors.add(validation.attribute, (validation.message || "has invalid length"), {});
-      }
+      if(value > validation.maximum)
+        add_error(this, validation.message);
     }else if(validation.within != undefined){
-      if((value > validation.within[1]) || (value < validation.within[0])){
-        this.object.errors.add(validation.attribute, (validation.message || "has invalid length"), {});
-      }
+      if((value > validation.within[1]) || (value < validation.within[0]))
+        add_error(this, validation.message);
+    }
+    add_error = function(object, message){
+      object.object.errors.add(validation.attribute, (message || "has invalid length"), {});
     }
   }
 });
