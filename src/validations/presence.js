@@ -5,7 +5,7 @@ MooModel.Validations.Presence = new Class({
   validate: function(validation){
     value = this.object.get(validation.attribute);
     if((value == null) || (value == '')){
-      this.object.errors.add(validation.attribute, validation.message, {});
+      this.object.errors.add(validation.attribute, (validation.message || "can't be blank"), {});
     }
   }
 });
