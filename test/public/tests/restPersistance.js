@@ -15,7 +15,6 @@ test('REST persistance: create', function(){
   same(person.new_record(), true);
   person.save(function(status){
   });
-  
 });
 
 test('REST persistance: destroy', function(){

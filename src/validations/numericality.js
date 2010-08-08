@@ -4,10 +4,8 @@ MooModel.Validations.Numericality = new Class({
   },
   validate: function(validation){
     value = this.object.get(validation.attribute);
-    if((value == null) && (validation.required == true))
-      this.object.errors.add(validation.attribute, 'is required', {});
 
-    if(isNaN(value))
+    if((isNaN(value)) || ((value ==null) && validation.allow_null == false) || ((value == '') && validation.allow_blank == false))
       this.object.errors.add(validation.attribute, validation.message, {});
   }
 });

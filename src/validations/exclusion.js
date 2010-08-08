@@ -4,6 +4,8 @@ MooModel.Validations.Exclusion = new Class({
   },
   validate: function(validation){
     value = this.object.get(validation.attribute);
+    if (((value == null) && (validation.allow_null == true)) || ((value == '') && (validation.allow_blank == true)))
+      return;
 
     if(validation.options.contains(value))
       this.object.errors.add(validation.attribute, validation.message, {});

@@ -4,7 +4,6 @@ test('It should validate the attributes with a custom validation rule', function
 
   var Person = new Class({
     Extends: MooModel.Base,
-
     Validations: [{ attribute: 'employeeNumber', type: 'custom', required: false, regex: new RegExp(/^\d{5}$/), message: 'should be a 5 digit number' }]
   });
 
@@ -14,4 +13,15 @@ test('It should validate the attributes with a custom validation rule', function
   person.set('employeeNumber', '123ASDF');
   same(person.valid(), false);
   same(person.errors.on('employeeNumber'), ['should be a 5 digit number']);
+});
+
+test('It should validate the attributes with a custom validation rule optionally', function(){
+
+  var Person = new Class({
+    Extends: MooModel.Base,
+    Validations: [{ attribute: 'employeeNumber', type: 'custom', required: false, regex: new RegExp(/^\d{5}$/), message: 'should be a 5 digit number', allow_null: true }]
+  });
+
+  person = new Person({id: 1, name: 'railsbob', description: "lorem", number: 100, age: 25, employeeNumber: null });
+  same(person.valid(), true);
 });

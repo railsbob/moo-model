@@ -5,8 +5,8 @@ test('It should validate the numericality of attributes', function(){
     Extends: MooModel.Base,
 
     Validations: [
-                  { attribute: 'number', type: 'numericality', required: false, message: "should be a number" },
-                  { attribute: 'age', type: 'numericality', required: true, message: 'should be a number' }
+                  { attribute: 'number', type: 'numericality', allow_null: true, message: "should be a number" },
+                  { attribute: 'age', type: 'numericality', allow_null: false, message: 'should be a number' }
                  ]
   });
 
@@ -26,8 +26,8 @@ test('Numeric attributes can be required or optional', function(){
     Extends: MooModel.Base,
 
     Validations: [
-                  { attribute: 'number', type: 'numericality', required: false, message: "should be a number" },
-                  { attribute: 'age', type: 'numericality', required: true, message: 'should be a number' }
+                  { attribute: 'number', type: 'numericality', allow_null: true, message: "should be a number" },
+                  { attribute: 'age', type: 'numericality', allow_null: false, message: 'should be a number' }
                  ]
   });
 
@@ -37,7 +37,6 @@ test('Numeric attributes can be required or optional', function(){
   same(person.valid(), true);
   person.set('age', null);
   same(person.valid(), false);
-  same(person.errors.on('age'), ['is required']);
 
   // number attribute can be null
   person.set('age', 26);
