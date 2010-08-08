@@ -1,3 +1,5 @@
+module("MooModel.Persistance");
+
 test("Persistance", function(){
 
   var Person = new Class({

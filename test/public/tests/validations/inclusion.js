@@ -1,3 +1,5 @@
+module("MooModel.Validations.Inclusion");
+
 test('It should validate inclusion of attributes', function(){
   var Person = new Class({
     Extends: MooModel.Base,

@@ -1,3 +1,5 @@
+module("MooModel.Validations.Presence");
+
 test("It should validate presence of attributes", function(){
 
   var Person = new Class({

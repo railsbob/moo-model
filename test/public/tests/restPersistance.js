@@ -1,3 +1,5 @@
+module("MooModel.RestPersistance");
+
 var Person = new Class({
   Extends: MooModel.Base,
   Persistance: { uses: MooModel.RestPersistance, resource_name: 'person' }

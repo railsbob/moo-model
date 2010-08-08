@@ -1,3 +1,5 @@
+module("MooModel.Validations.Within");
+
 test('It should validate the numeric attribute with a given range', function(){
 
   var Person = new Class({

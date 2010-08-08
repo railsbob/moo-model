@@ -1,3 +1,5 @@
+module("MooModel.Validations.Exclusion");
+
 test('It should validate exclusion of attributes', function(){
   var Person = new Class({
     Extends: MooModel.Base,

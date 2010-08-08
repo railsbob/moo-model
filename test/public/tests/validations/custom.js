@@ -1,3 +1,5 @@
+module("MooModel.Validations.Custom");
+
 test('It should validate the attributes with a custom validation rule', function(){
 
   var Person = new Class({

@@ -1,3 +1,5 @@
+module("MooModel.Validations.Numericality");
+
 test('It should validate the numericality of attributes', function(){
   var Person = new Class({
     Extends: MooModel.Base,

@@ -1,3 +1,5 @@
+module("MooModel.Base");
+
 var Post = new Class({
   Extends: MooModel.Base
 });
