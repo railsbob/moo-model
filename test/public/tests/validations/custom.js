@@ -1,7 +1,6 @@
 test('It should validate the attributes with a custom validation rule', function(){
 
   var Person = new Class({
-    Name: 'person',
     Extends: MooModel.Base,
 
     Validations: [{ attribute: 'employeeNumber', type: 'custom', required: false, regex: new RegExp(/^\d{5}$/), message: 'should be a 5 digit number' }]

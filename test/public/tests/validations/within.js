@@ -1,7 +1,6 @@
 test('It should validate the numeric attribute with a given range', function(){
 
   var Person = new Class({
-    Name: 'person',
     Extends: MooModel.Base,
 
     Validations: [{ attribute: 'age', type: 'within', min: 20, max: 25, required: true, message: 'out of range' }]

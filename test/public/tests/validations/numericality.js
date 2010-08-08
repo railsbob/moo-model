@@ -1,6 +1,5 @@
 test('It should validate the numericality of attributes', function(){
   var Person = new Class({
-    Name: 'person',
     Extends: MooModel.Base,
 
     Validations: [
@@ -22,7 +21,6 @@ test('It should validate the numericality of attributes', function(){
 
 test('Numeric attributes can be required or optional', function(){
   var Person = new Class({
-    Name: 'person',
     Extends: MooModel.Base,
 
     Validations: [

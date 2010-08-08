@@ -1,6 +1,6 @@
 var Person = new Class({
   Extends: MooModel.Base,
-  Name: 'person'
+  Persistance: { uses: MooModel.RestPersistance, resource_name: 'person' }
 });
 
 test('REST persistance: it should return a resource path based on model_name', function(){

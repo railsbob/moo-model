@@ -42,17 +42,25 @@ MooModel.InstanceMethods = {
     return this;
   },
 
+  remove: function(callback){
+    this.constructor.remove(this.id());
+  },
+
   destroy: function(callback){
     this.call_persist_method("destroy", callback);
   },
 
+  // TODO: call persistance method only if configured
   call_persist_method: function(method, callback){
     if(method == 'create'){
       this.constructor.add(this);
-      MooModel.RestPersistance.create(this, callback);
+      // TODO: Not sure if this is the best approach
+      if(this.persistance != undefined)
+        this.persistance.create(this, callback);
     }else if(method == 'destroy'){
       this.constructor.remove(this.id());
-      MooModel.RestPersistance.destroy(this, callback);
+      if(this.persistance != undefined)
+       this.persistance.destroy(this, callback);
     }
   }
 };

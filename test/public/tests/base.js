@@ -1,7 +1,6 @@
 module("MooModel.Base");
 
 var Post = new Class({
-  Name: 'post',
   Extends: MooModel.Base,
   
   Validations: {
@@ -28,6 +27,6 @@ test("it should remove an element from the collection", function(){
   var post = new Post({id: 1, name: "bob"});
   Post.add(post);
   equals(Post.collection.length, 1);
-  post.destroy();
+  post.remove();
   equals(Post.collection.length, 0);
 });

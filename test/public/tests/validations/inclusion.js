@@ -1,6 +1,5 @@
 test('It should validate inclusion of attributes', function(){
   var Person = new Class({
-    Name: 'person',
     Extends: MooModel.Base,
 
     Validations: [{ attribute: 'skills', type: 'inclusion', options: ['ror', 'mongo'], message: 'is not allowed' }]

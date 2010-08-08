@@ -1,7 +1,6 @@
 test("It should validate presence of attributes", function(){
 
   var Person = new Class({
-    Name: 'person',
     Extends: MooModel.Base,
 
     Validations: [{ attribute: 'name', type: 'presence', message: "is required" }]
