@@ -28,6 +28,8 @@ MooModel.Validations = new Class({
           break;
           case 'exclusion': (new MooModel.Validations.Exclusion(object)).validate(i);
           break;
+          case 'length': (new MooModel.Validations.Length(object)).validate(i);
+          break;
         }
       });
     }
