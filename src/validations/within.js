@@ -8,6 +8,6 @@ MooModel.Validations.Within = new Class({
       return;
 
     if((value > validation.max) || (value < validation.min))
-      this.object.errors.add(validation.attribute, validation.message, {});
+      this.object.errors.add(validation.attribute, (validation.message || 'out of range'), {});
   }
 });

@@ -8,6 +8,6 @@ MooModel.Validations.Exclusion = new Class({
       return;
 
     if(validation.options.contains(value))
-      this.object.errors.add(validation.attribute, validation.message, {});
+      this.object.errors.add(validation.attribute, (validation.message || 'is not allowed'), {});
   }
 });
