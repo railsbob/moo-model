@@ -2,13 +2,18 @@ MooModel.InstanceMethods = {
   initialize: function(attrs){
     this.attributes = new ObservableHash(attrs);
     this.errors = new MooModel.Errors(this);
+    this.changed_attributes = new Hash();
   },
 
   get: function(key){
-    return this.attributes.get(key)
+    return this.attributes.get(key);
   },
 
   set: function(key, value){
+    current_value = this.attributes.get(key);
+    if(current_value != value){
+      this.changed_attributes[key] = [current_value, value];
+    }
     return this.attributes.set(key, value)
   },
 
@@ -24,6 +29,25 @@ MooModel.InstanceMethods = {
     return(this.id() == null);
   },
 
+  changed: function(){
+    return this.changed_attributes.getKeys();
+  },
+
+  has_changed: function(attr){
+    if(attr!=undefined){
+      return this.changed_attributes.has(attr);
+    }else{
+      return this.changed_attributes.getKeys().length > 0;
+    }
+  },
+
+  attribute_changes: function(attr){
+    if(attr!=undefined)
+      return this.changed_attributes[attr];
+    else
+      return this.changed_attributes;
+  },
+
   resource_path: function(){
     return this.constructor.resource_path(this);
   },
@@ -36,6 +60,7 @@ MooModel.InstanceMethods = {
     if (this.valid()) {
       var method = this.new_record() ? "create" : "update";
       this.call_persist_method(method, callback);
+      this.changed_attributes.empty();
     } else if (callback) {
       callback(false);
     }
