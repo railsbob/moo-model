@@ -4,9 +4,8 @@ MooModel.Validations.Custom = new Class({
   },
   validate: function(validation){
     value = this.object.get(validation.attribute);
-
-    if((validation.required == true) && (value == null))
-      this.object.errors.add(validation.attribute, 'is required', {});
+    if (((value == null) && (validation.allow_null == true)) || ((value == '') && (validation.allow_blank == true)))
+      return;
 
     if((value != null) && (value.match(validation.regex) == null)){
       this.object.errors.add(validation.attribute, validation.message, {});

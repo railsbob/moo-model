@@ -15,9 +15,11 @@ test('REST persistance: create', function(){
   same(person.new_record(), true);
   person.save(function(status){
   });
+  // TODO: fix this
 });
 
 test('REST persistance: destroy', function(){
   person = new Person({ id: 90 });
   person.destroy();
+  // TODO: fix this
 });

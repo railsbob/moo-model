@@ -10,6 +10,8 @@ MooModel.RestPersistance = {
   jsonRequest: function(method, url, resource, callback){
     if(method == 'delete'){
       new Request.JSON({ url: url, onSuccess: callback }).post($merge(resource.attributes.$data, {_method: 'DELETE'}));
+    }else if(method == 'update'){
+      new Request.JSON({ url: url, onSuccess: callback }).post($merge(resource.attributes.$data, {_method: 'PUT'}));
     }else if(method == 'post'){
       new Request.JSON({ url: url, onSuccess: callback }).post(resource.attributes.$data);
     }
