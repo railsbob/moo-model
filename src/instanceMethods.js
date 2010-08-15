@@ -12,7 +12,7 @@ MooModel.InstanceMethods = {
   set: function(key, value){
     current_value = this.attributes.get(key);
     if(current_value != value){
-      this.changed_attributes[key] = [current_value, value];
+      this.changed_attributes[key] = current_value;
     }
     return this.attributes.set(key, value)
   },
@@ -41,11 +41,33 @@ MooModel.InstanceMethods = {
     }
   },
 
-  attribute_changes: function(attr){
+  changes: function(attr){
+    instance = this;
+
     if(attr!=undefined)
-      return this.changed_attributes[attr];
-    else
-      return this.changed_attributes;
+      return [this.changed_attributes[attr], this.attributes.get(attr)];
+    else{
+      all_changes = new Hash();
+      this.changed().each(function(attribute, index){
+        all_changes[attribute] = [instance.changed_attributes[attribute], instance.attributes.get(attribute)];
+      });
+      return all_changes;
+    }
+  },
+
+  reset: function(attr){
+    instance = this;
+    if(attr!=undefined){
+      if(this.has_changed(attr))
+        this.set(attr, this.changed_attributes[attr]);
+        this.changed_attributes.erase(attr);
+    }
+    else{
+      this.changed().each(function(attribute, index){
+        instance.set(attribute, instance.changed_attributes[attribute]);
+        instance.changed_attributes.erase(attribute);
+      });
+    }
   },
 
   resource_path: function(){

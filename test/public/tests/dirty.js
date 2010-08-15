@@ -29,14 +29,24 @@ test("should reset has_changed status after saving", function(){
 test("should preserve previous changes", function(){
   foo = new Story({ name: 'ducktales' });
   foo.set('name', 'duck eggs');
-  same(foo.attribute_changes(), new Hash({ name: ["ducktales", "duck eggs"]}));
-  same(foo.attribute_changes("name"), ["ducktales", "duck eggs"]);
+  same(foo.changes(), new Hash({ name: ["ducktales", "duck eggs"]}));
+  same(foo.changes("name"), ["ducktales", "duck eggs"]);
 });
 
-test("reset attributes", function(){
+test("reset an attribute", function(){
   foo = new Story({ name: 'ducktales' });
   foo.set('name', 'duck eggs');
-  same(foo.attribute_changes("name"), ["ducktales", "duck eggs"]);
-  // foo.reset();
-  // same(foo.get('name'), "ducktales");
+  same(foo.changes("name"), ["ducktales", "duck eggs"]);
+  foo.reset('name');
+  same(foo.get('name'), "ducktales");
+  ok(!foo.has_changed('name'));
+});
+
+test("reset all attributes", function(){
+  foo = new Story({ name: 'ducktales' });
+  foo.set('name', 'duck eggs');
+  same(foo.changes("name"), ["ducktales", "duck eggs"]);
+  foo.reset();
+  same(foo.get('name'), "ducktales");
+  same(foo.changed(), []);
 });
