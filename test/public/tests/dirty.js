@@ -50,3 +50,9 @@ test("reset all attributes", function(){
   same(foo.get('name'), "ducktales");
   same(foo.changed(), []);
 });
+
+test("a meaningless reset", function(){
+  foo = new Story({ name: 'ducktales' });
+  foo.reset();
+  same(foo.changed(), []);
+});
