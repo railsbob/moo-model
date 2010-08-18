@@ -5,6 +5,7 @@ MooModel.CollectionMethods = {
       existing_object = this.detect(object.id());
       if(!existing_object){
         this.collection.push(object);
+        this.fireEvent('add');
       }
     }
   },
@@ -12,6 +13,7 @@ MooModel.CollectionMethods = {
   remove: function(id){
     object = this.detect(id);
     this.collection.erase(object);
+    this.fireEvent('remove');
   },
 
   all: function(){
@@ -42,5 +44,13 @@ MooModel.CollectionMethods = {
 
   random: function(){
     return this.collection.getRandom();
+  },
+
+  observeAdd: function(callback){
+    return this.addEvent('add', callback);
+  },
+
+  observeRemove: function(callback){
+    return this.addEvent('remove', callback);
   }
 }

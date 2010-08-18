@@ -1,5 +1,5 @@
 MooModel.Base = new Class({
-  ClassMethods: $merge(MooModel.CollectionMethods),
   Implements: [MooModel.Validations, MooModel.InstanceMethods],
+  ClassMethods: $merge(Events.prototype, MooModel.CollectionMethods),
   Validations: {}
 });
