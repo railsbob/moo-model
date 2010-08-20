@@ -45,14 +45,14 @@ test("It should observe erase event", function(){
 test("It should observe collection add event", function(){
   added = false;
 
-  Post.observeAdd(function(){
-    added = true;
+  Post.observeAdd(function(instance){
+    added = 'added ' + instance.get('name');
   });
   var post = new Post({id: 1, name: "bean"});
 
 
   Post.add(post);
-  ok(added);
+  same(added, 'added bean');
 });
 
 test("It should observe collection remove event", function(){

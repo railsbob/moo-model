@@ -5,7 +5,7 @@ MooModel.CollectionMethods = {
       existing_object = this.detect(object.id());
       if(!existing_object){
         this.collection.push(object);
-        this.fireEvent('add');
+        this.fireEvent('add', object);
       }
     }
   },
