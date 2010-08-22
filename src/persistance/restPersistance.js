@@ -18,10 +18,16 @@ MooModel.RestPersistance = {
   },
 
   resource_path: function(resource){
-    return ['', pluralize(resource.constructor.model_name), resource.id()].join('/');
+    if(resource.constructor.route == undefined)
+      return ['', pluralize(resource.constructor.model_name), resource.id()].join('/');
+    else
+      return [resource.constructor.route, resource.id()].join('/');
   },
 
   collection_path: function(resource){
-    return ['', pluralize(resource.constructor.model_name)].join('/');
+    if(resource.constructor.route == undefined)
+      return ['', pluralize(resource.constructor.model_name)].join('/');
+    else
+      return resource.constructor.route;
   }
 };
