@@ -16,12 +16,6 @@ test("Test functions [add, all, clear, each, on, size] on object.errors", functi
   post.errors.add('description', 'should be short', {});
   same(post.errors.all(), { name: ['is incorrect'], description: ['should be short'] });
 
-  var count = 0
-  post.errors.each(function(){
-    count++;
-  });
-  equals(count, 2);
-
   equals(post.errors.size(), 2);
 
   post.errors.clear();
