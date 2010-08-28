@@ -58,12 +58,23 @@ test('update 200', function(){
     });
   });
 });
-// 
-// test('destroy 200', function(){
-//   person = new Person({ id: 90 });
-//   person.destroy();
-//   // TODO: fix this
-// });
+
+test('destroy 200', function(){
+  var Person = new Class({
+    Extends: MooModel.Base,
+    Persistance: { uses: MooModel.RestPersistance, resource_name: 'person' }
+  });
+
+  moo = new Person({ id: 90, name: 'moo' });
+  Person.add(moo);
+
+  moo.destroy(function(){
+    test('refreshed collection after delete', function(){
+      equals(Person.find(90), null);
+    });
+  });
+});
+
 // 
 // test('create 500', function(){
 //   
