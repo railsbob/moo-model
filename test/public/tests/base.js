@@ -30,3 +30,32 @@ test("it should remove an element from the collection", function(){
   post.remove();
   equals(Post.collection.length, 0);
 });
+
+test("class methods and instance methods", function(){
+  var Nut = new Class({
+    Extends: MooModel.Base,
+
+    ClassMethods: {
+      speak: function(){
+        return 'Hello';
+      }
+    },
+
+    speak: function(){
+      return 'Nut says Hello';
+    }
+  });
+
+  same(Nut.speak(), 'Hello');
+  var bob = new Nut({ name: 'bob' });
+  same(bob.speak(), 'Nut says Hello');
+
+  var Duck = new Class({
+    Extends: Nut
+  });
+
+  same(Duck.speak(), 'Hello');
+
+  var dood = new Duck({ id: 1 });
+  same(dood.speak(), 'Nut says Hello');
+});

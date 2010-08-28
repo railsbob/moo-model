@@ -97,17 +97,16 @@ MooModel.InstanceMethods = {
     this.call_persist_method("destroy", callback);
   },
 
-  // TODO: call persistance method only if configured
   call_persist_method: function(method, callback){
     if(method == 'create'){
-      this.constructor.add(this);
-      // TODO: Not sure if this is the best approach
-      if(this.persistance != undefined)
-        this.persistance.create(this, callback);
-    }else if(method == 'destroy'){
-      this.constructor.remove(this.id());
-      if(this.persistance != undefined)
-       this.persistance.destroy(this, callback);
+      if(this.constructor.persistance != undefined)
+        this.constructor.persistance.create(this, callback);
+    } else if(method == 'update'){
+      if(this.constructor.persistance != undefined)
+        this.constructor.persistance.update(this, callback);
+    } else if(method == 'destroy'){
+      if(this.constructor.persistance != undefined)
+       this.constructor.persistance.destroy(this, callback);
     }
   }
 };

@@ -22,11 +22,12 @@ MooModel.CollectionMethods = {
 
   detect: function(id) {
     var model;
-    $each(this.collection, function(i) {
-      if (i.get('id') == id) {
-         model = i;
-      }
-    });
+    if(this.collection.length > 0)
+      $each(this.collection, function(i) {
+        if (i.get('id') == id) {
+           model = i;
+        }
+      });
     return model;
   },
 
@@ -44,6 +45,10 @@ MooModel.CollectionMethods = {
 
   random: function(){
     return this.collection.getRandom();
+  },
+
+  count: function(){
+    return this.collection.length;
   },
 
   observeAdd: function(callback){
