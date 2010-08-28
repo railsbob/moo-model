@@ -21,6 +21,10 @@ MooModel.RestPersistance = {
         url: url,
         onSuccess: function(data){
           self.refreshAttributes(result, method, resource, data, callback)
+        },
+        onFailure: function(status){
+          if(callback != undefined)
+            callback.call(resource);
         }
       }).post($merge(resource.attributes.$data, { _method: 'DELETE' }));
     }else if(method == 'update'){
@@ -28,13 +32,21 @@ MooModel.RestPersistance = {
         url: url,
         onSuccess: function(data){
           self.refreshAttributes(result, method, resource, data, callback)
+        },
+        onFailure: function(status){
+          if(callback != undefined)
+            callback.call(resource);
         }
       }).post($merge(resource.attributes.$data, { _method: 'PUT' }));
     }else if(method == 'post'){
       var result = new Request.JSON({
         url: url,
         onSuccess: function(data){
-          self.refreshAttributes(result, method, resource, data, callback)
+          self.refreshAttributes(result, method, resource, data, callback);
+        },
+        onFailure: function(status){
+          if(callback != undefined)
+            callback.call(resource);
         }
       }).post(resource.attributes.$data);
     }

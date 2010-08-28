@@ -96,12 +96,12 @@ test('update 500', function(){
     Persistance: { uses: MooModel.RestPersistance, route: '/people_failure' }
   });
 
-  railsbob = new Person({ id: 92, name: 'railsbob' });
-  Person.add(railsbob);
+  hero = new Person({ id: 92, name: 'hero' });
+  Person.add(hero);
 
-  railsbob.save(function(){
+  hero.save(function(){
     test('failed update attempt', function(){
-      same(railsbob.get('name'), 'railsbob');
+      same(hero.get('name'), 'hero');
     });
   });
 });
@@ -112,12 +112,12 @@ test('destroy 500', function(){
     Persistance: { uses: MooModel.RestPersistance, route: '/people_failure' }
   });
 
-  railsbob = new Person({ id: 92, name: 'railsbob' });
-  Person.add(railsbob);
+  mac = new Person({ id: 93, name: 'mac' });
+  Person.add(mac);
 
   railsbob.destroy(function(){
     test('failed delete attempt', function(){
-      same(Person.find(92), railsbob);
+      same(Person.find(93), mac);
     });
   });
 });
