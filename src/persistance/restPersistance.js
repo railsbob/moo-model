@@ -17,44 +17,49 @@ MooModel.RestPersistance = {
     var self = this;
 
     if(method == 'delete'){
-      new Request.JSON({
+      var result = new Request.JSON({
         url: url,
         onSuccess: function(data){
-          self.refreshAttributes(method, resource, data, callback)
+          self.refreshAttributes(result, method, resource, data, callback)
         }
       }).post($merge(resource.attributes.$data, { _method: 'DELETE' }));
     }else if(method == 'update'){
-      new Request.JSON({
+      var result = new Request.JSON({
         url: url,
         onSuccess: function(data){
-          self.refreshAttributes(method, resource, data, callback)
+          self.refreshAttributes(result, method, resource, data, callback)
         }
       }).post($merge(resource.attributes.$data, { _method: 'PUT' }));
     }else if(method == 'post'){
-      new Request.JSON({
+      var result = new Request.JSON({
         url: url,
         onSuccess: function(data){
-          self.refreshAttributes(method, resource, data, callback)
+          self.refreshAttributes(result, method, resource, data, callback)
         }
       }).post(resource.attributes.$data);
     }
   },
 
-  refreshAttributes: function(method, resource, data, callback){
+  refreshAttributes: function(request, method, resource, data, callback){
 
-    if(method!='delete'){
-      $each(data, function(a,b){
-        resource.set(b, data[b]);
-      });
+    if(request.status == 200){
+
+      if(method!='delete'){
+        $each(data, function(a,b){
+          resource.set(b, data[b]);
+        });
+      }
+
+      object = resource.constructor.find(resource.id());
+
+      if(object!=undefined)
+        resource.constructor.remove(object.id());
+
+      if(method!='delete')
+        resource.constructor.add(resource);
+    }else if(request.status == 422){
+      
     }
-
-    object = resource.constructor.find(resource.id());
-
-    if(object!=undefined)
-      resource.constructor.remove(object.id());
-
-    if(method!='delete')
-      resource.constructor.add(resource);
 
     if(callback)
       callback.call(resource);
