@@ -122,15 +122,33 @@ test('destroy 500', function(){
   });
 });
 
-// test('create 422', function(){
-//   
-// });
-// 
-// test('update 422', function(){
-//   
-// });
-// 
-// test('destroy 422', function(){
-//   
-// });
+test('create 422', function(){
+  var Person = new Class({
+    Extends: MooModel.Base,
+    Persistance: { uses: MooModel.RestPersistance, route: '/people_validations' }
+  });
+
+  baz = new Person({ name: 'baz' });
+  baz.save(function(){
+    test('failed validation create attempt', function(){
+      same(baz.new_record(), true);
+    });
+  });
+});
+
+test('update 422', function(){
+  var Person = new Class({
+    Extends: MooModel.Base,
+    Persistance: { uses: MooModel.RestPersistance, route: '/people_validations' }
+  });
+
+  foobar = new Person({ id: 98, name: 'foobar' });
+  Person.add(foobar);
+
+  foobar.save(function(){
+    test('failed validation update attempt', function(){
+      same(foobar.get('name'), 'foobar');
+    });
+  });
+});
 
