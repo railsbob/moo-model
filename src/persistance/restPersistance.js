@@ -15,41 +15,30 @@ MooModel.RestPersistance = {
 
   jsonRequest: function(method, url, resource, callback){
     var self = this;
+    var request_method;
 
-    if(method == 'delete'){
-      var result = new Request.JSON({
-        url: url,
-        onSuccess: function(data){
-          self.refreshAttributes(result, method, resource, data, callback)
-        },
-        onFailure: function(status){
-          if(callback != undefined)
-            callback.call(resource);
-        }
-      }).post($merge(resource.attributes.$data, { _method: 'DELETE' }));
-    }else if(method == 'update'){
-      var result = new Request.JSON({
-        url: url,
-        onSuccess: function(data){
-          self.refreshAttributes(result, method, resource, data, callback)
-        },
-        onFailure: function(status){
-          if(callback != undefined)
-            callback.call(resource);
-        }
-      }).post($merge(resource.attributes.$data, { _method: 'PUT' }));
-    }else if(method == 'post'){
-      var result = new Request.JSON({
-        url: url,
-        onSuccess: function(data){
-          self.refreshAttributes(result, method, resource, data, callback);
-        },
-        onFailure: function(status){
-          if(callback != undefined)
-            callback.call(resource);
-        }
-      }).post(resource.attributes.$data);
+    switch(method){
+      case 'delete':
+        request_method = 'DELETE';
+        break;
+      case 'update':
+        request_method = 'PUT';
+        break;
+      case 'post':
+        request_method = 'POST';
+        break;
     }
+
+    var result = new Request.JSON({
+      url: url,
+      onSuccess: function(data){
+        self.refreshAttributes(result, method, resource, data, callback);
+      },
+      onFailure: function(data){
+        self.refreshAttributes(result, method, resource, data, callback);
+      }
+    }).post($merge(resource.attributes.$data, { _method: request_method }));
+
   },
 
   refreshAttributes: function(request, method, resource, data, callback){
