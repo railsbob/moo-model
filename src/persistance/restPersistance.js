@@ -59,7 +59,9 @@ MooModel.RestPersistance = {
       if(method!='delete')
         resource.constructor.add(resource);
     }else if(request.status == 422){
-      
+      $each(JSON.parse(data.responseText), function(error){
+        resource.errors.add(error[0], error[1]);
+      });
     }
 
     if(callback)

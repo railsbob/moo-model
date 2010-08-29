@@ -132,6 +132,7 @@ test('create 422', function(){
   baz.save(function(){
     test('failed validation create attempt', function(){
       same(baz.new_record(), true);
+      same(baz.errors.on('name'), ["can't be blank"]);
     });
   });
 });
@@ -148,6 +149,7 @@ test('update 422', function(){
   foobar.save(function(){
     test('failed validation update attempt', function(){
       same(foobar.get('name'), 'foobar');
+      same(foobar.errors.on('name'), ["can't be blank"]);
     });
   });
 });

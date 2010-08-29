@@ -33,8 +33,10 @@ end
 
 post '/people_validations' do
   status 422
+  JSON.generate([["name", "can't be blank"]])
 end
 
 put '/people_validations/:id' do
   status 422
+  JSON.generate([["name", "can't be blank"]])
 end
