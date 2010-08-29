@@ -99,14 +99,14 @@ MooModel.InstanceMethods = {
 
   call_persist_method: function(method, callback){
     if(method == 'create'){
-      if(this.constructor.persistance != undefined)
-        this.constructor.persistance.create(this, callback);
+      if(this.constructor.persistence != undefined)
+        this.constructor.persistence.create(this, callback);
     } else if(method == 'update'){
-      if(this.constructor.persistance != undefined)
-        this.constructor.persistance.update(this, callback);
+      if(this.constructor.persistence != undefined)
+        this.constructor.persistence.update(this, callback);
     } else if(method == 'destroy'){
-      if(this.constructor.persistance != undefined)
-       this.constructor.persistance.destroy(this, callback);
+      if(this.constructor.persistence != undefined)
+       this.constructor.persistence.destroy(this, callback);
     }
   }
 };

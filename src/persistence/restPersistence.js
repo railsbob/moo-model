@@ -1,6 +1,6 @@
 // REST storage
 
-MooModel.RestPersistance = {
+MooModel.RestPersistence = {
   create: function(resource, callback){
     this.jsonRequest('post', resource.collection_path(), resource, callback);
   },

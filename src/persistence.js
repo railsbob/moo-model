@@ -1,7 +1,7 @@
-Class.Mutators.Persistance = function(options){
+Class.Mutators.Persistence = function(options){
   this.model_name = options.resource_name;
   this.route = options.route;
-  this.persistance = options.uses;
+  this.persistence = options.uses;
   this.extend(options.uses);
 }
 

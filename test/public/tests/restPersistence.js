@@ -1,9 +1,9 @@
-module("MooModel.RestPersistance");
+module("MooModel.RestPersistence");
 
 test('it should return a resource path based on model_name', function(){
   var Person = new Class({
     Extends: MooModel.Base,
-    Persistance: { uses: MooModel.RestPersistance, resource_name: 'person' }
+    Persistence: { uses: MooModel.RestPersistence, resource_name: 'person' }
   });
 
   person = new Person({id: 1});
@@ -13,7 +13,7 @@ test('it should return a resource path based on model_name', function(){
 test('it should accept a manual resource path', function(){
   var Dude = new Class({
     Extends: MooModel.Base,
-    Persistance: { uses: MooModel.RestPersistance, resource_name: 'dude', route: '/employees' }
+    Persistence: { uses: MooModel.RestPersistence, resource_name: 'dude', route: '/employees' }
   });
 
   dood = new Dude({ id: 10 });
@@ -25,7 +25,7 @@ test('it should accept a manual resource path', function(){
 test('create 200', function(){
   var Person = new Class({
     Extends: MooModel.Base,
-    Persistance: { uses: MooModel.RestPersistance, resource_name: 'person' }
+    Persistence: { uses: MooModel.RestPersistence, resource_name: 'person' }
   });
 
   person = new Person({ name: 'anup' });
@@ -45,7 +45,7 @@ test('create 200', function(){
 test('update 200', function(){
   var Person = new Class({
     Extends: MooModel.Base,
-    Persistance: { uses: MooModel.RestPersistance, resource_name: 'person' }
+    Persistence: { uses: MooModel.RestPersistence, resource_name: 'person' }
   });
 
   bob = new Person({ id: 99, name: 'bob' });
@@ -62,7 +62,7 @@ test('update 200', function(){
 test('destroy 200', function(){
   var Person = new Class({
     Extends: MooModel.Base,
-    Persistance: { uses: MooModel.RestPersistance, resource_name: 'person' }
+    Persistence: { uses: MooModel.RestPersistence, resource_name: 'person' }
   });
 
   moo = new Person({ id: 90, name: 'moo' });
@@ -79,7 +79,7 @@ test('destroy 200', function(){
 test('create 500', function(){
   var Person = new Class({
     Extends: MooModel.Base,
-    Persistance: { uses: MooModel.RestPersistance, route: '/people_failure' }
+    Persistence: { uses: MooModel.RestPersistence, route: '/people_failure' }
   });
 
   railsbob = new Person({ name: 'railsbob' });
@@ -93,7 +93,7 @@ test('create 500', function(){
 test('update 500', function(){
   var Person = new Class({
     Extends: MooModel.Base,
-    Persistance: { uses: MooModel.RestPersistance, route: '/people_failure' }
+    Persistence: { uses: MooModel.RestPersistence, route: '/people_failure' }
   });
 
   hero = new Person({ id: 92, name: 'hero' });
@@ -109,7 +109,7 @@ test('update 500', function(){
 test('destroy 500', function(){
   var Person = new Class({
     Extends: MooModel.Base,
-    Persistance: { uses: MooModel.RestPersistance, route: '/people_failure' }
+    Persistence: { uses: MooModel.RestPersistence, route: '/people_failure' }
   });
 
   mac = new Person({ id: 93, name: 'mac' });
@@ -125,7 +125,7 @@ test('destroy 500', function(){
 test('create 422', function(){
   var Person = new Class({
     Extends: MooModel.Base,
-    Persistance: { uses: MooModel.RestPersistance, route: '/people_validations' }
+    Persistence: { uses: MooModel.RestPersistence, route: '/people_validations' }
   });
 
   baz = new Person({ name: 'baz' });
@@ -140,7 +140,7 @@ test('create 422', function(){
 test('update 422', function(){
   var Person = new Class({
     Extends: MooModel.Base,
-    Persistance: { uses: MooModel.RestPersistance, route: '/people_validations' }
+    Persistence: { uses: MooModel.RestPersistence, route: '/people_validations' }
   });
 
   foobar = new Person({ id: 98, name: 'foobar' });
