@@ -7,14 +7,14 @@ var Post = new Class({
 var post = new Post({id: 1, name: "bean", description: "lorem"});
 
 test("It should observe set event", function(){
-  var changed = false;
+  var changed = '';
   post.set('name', 'bean');
-  ok(!changed);
-  post.attributes.observeSet('name', function(){
-    changed = true;
+  same(changed, '');
+  post.attributes.observeSet('name', function(value){
+    changed = 'value changed to ' + value;
   });
   post.set('name', 'pulp');
-  ok(changed);
+  equals(changed, 'value changed to pulp');
 });
 
 test("It should observe get event", function(){
@@ -50,21 +50,19 @@ test("It should observe collection add event", function(){
   });
   var post = new Post({id: 1, name: "bean"});
 
-
   Post.add(post);
   same(added, 'added bean');
 });
 
 test("It should observe collection remove event", function(){
-  removed = false;
-  Post.observeRemove(function(){
-    removed = true;
+  removed = '';
+  Post.observeRemove(function(instance){
+    removed = 'removed post ' + instance.get('id');
   });
   var post = new Post({id: 1, name: "bean"});
   Post.add(post);
-  
-  ok(!removed);
+
   Post.remove(post.get('id'));
 
-  ok(removed);
+  same(removed, 'removed post 1');
 });

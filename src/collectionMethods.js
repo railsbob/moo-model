@@ -13,7 +13,7 @@ MooModel.CollectionMethods = {
   remove: function(id){
     object = this.detect(id);
     this.collection.erase(object);
-    this.fireEvent('remove');
+    this.fireEvent('remove', object);
   },
 
   all: function(){
