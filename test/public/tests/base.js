@@ -59,3 +59,22 @@ test("class methods and instance methods", function(){
   var dood = new Duck({ id: 1 });
   same(dood.speak(), 'Nut says Hello');
 });
+
+test('Implements', function(){
+  var Able = new Class({
+    Extends: MooModel.Base,
+
+    hello: function(){
+      return 'Hello from a class';
+    }
+  });
+
+  var Nut = new Class({
+    Extends: MooModel.Base,
+    Implements: Able
+  });
+
+  var nut = new Nut({ id: 1 });
+
+  same(nut.hello(), 'Hello from a class');
+});
