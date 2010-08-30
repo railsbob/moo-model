@@ -232,3 +232,5 @@ underscore = function (word) {
 dash = dasherize = function (word) {
     return split(word, "-").toLowerCase();
 }
+// End of inflection.js
+

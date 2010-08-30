@@ -1,3 +1,4 @@
+// Validation errors
 MooModel.Errors = new Class({
   initialize: function(model){
     this.errors = {};
@@ -40,4 +41,4 @@ MooModel.Errors = new Class({
   empty: function(){
     return this.size() == 0
   }
-})
+});

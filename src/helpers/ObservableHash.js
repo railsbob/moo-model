@@ -1,12 +1,12 @@
+// Helper: ObservableHash
+
 /*
 Script: ObservableHash.js
 	A Hash, but observable!
 
-License:
-	MIT-style license.
+License: MIT-style license.
 
-Copyright:
-	Copyright (c) 2008 [Thomas Aylott](http://subtlegradient.com).
+Copyright: Copyright (c) 2008 [Thomas Aylott](http://subtlegradient.com).
 
 */
 
@@ -18,3 +18,4 @@ var ObservableHash = new Class({
 	
 });
 ObservableHash.implement(ObservableData);
+

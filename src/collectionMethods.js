@@ -1,3 +1,4 @@
+// Collection Methods/Class methods
 MooModel.CollectionMethods = {
   collection: [],
   add: function(object){
@@ -59,3 +60,4 @@ MooModel.CollectionMethods = {
     return this.addEvent('remove', callback);
   }
 }
+

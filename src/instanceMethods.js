@@ -1,3 +1,4 @@
+// Instance Methods
 MooModel.InstanceMethods = {
   initialize: function(attrs){
     this.attributes = new ObservableHash(attrs);

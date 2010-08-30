@@ -2,4 +2,4 @@
 
 MooModel.LocalStorage = {
   
-}
+};

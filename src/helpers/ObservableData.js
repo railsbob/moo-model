@@ -1,14 +1,11 @@
-/*
-Script: ObservableData.js
+// Helper: ObservableData
+
+/* Script: ObservableData.js
   A bunch of methods that you can implement on your own classes that provide a standard interface to Observable classes.
 
-License:
-  MIT-style license.
+License: MIT-style license.
 
-Copyright:
-  Copyright (c) 2008 [Thomas Aylott](http://subtlegradient.com).
-
-*/
+Copyright: Copyright (c) 2008 [Thomas Aylott](http://subtlegradient.com). */
 
 var ObservableData = {
 
@@ -73,3 +70,4 @@ var ObservableData = {
     return this.addEvent('erase:'+key, fn)
   }
 };
+
