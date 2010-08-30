@@ -22,12 +22,12 @@ test("It should observe get event", function(){
   var changed = false;
   post.get('name');
 
-  ok(!changed);
+  ok(!changed, 'No change');
   post.attributes.observeGet('name', function(){
     changed = true;
   });
   post.get('name');
-  ok(changed);
+  ok(changed, 'Changed');
 });
 
 test("It should observe erase event", function(){
@@ -39,7 +39,7 @@ test("It should observe erase event", function(){
     changed = true;
   });
   post.erase('name');
-  ok(changed);
+  ok(changed, 'Changed');
 });
 
 test("It should observe collection add event", function(){
