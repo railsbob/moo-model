@@ -1,4 +1,6 @@
 /*
+MooModel Dependency
+
 Script: ObservableHash.js
   A Hash, but observable!
 
@@ -6,26 +8,6 @@ License: MIT-style license.
 
 Copyright: Copyright (c) 2008 [Thomas Aylott](http://subtlegradient.com). */
 
-
-// Class.PostMutators.ExtendsNative=function(self,klass){
-//   var methods = {
-//     initialize: function(data){
-//       this.$data = new klass(data);
-//     }
-//   };
-//   
-//   Hash.getKeys(klass).each(function(key){
-//     methods[key] = function(){ return this.$data[key].apply(this.$data, arguments); };
-//   });
-//   
-//   return self.implement(methods);
-// };
-// 
-// var HashClass = new Class({
-//   
-//   ExtendsNative:Hash
-//   
-// });
 (function(){
   
   var HashClass = new Class({

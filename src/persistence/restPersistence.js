@@ -1,4 +1,6 @@
-// REST storage
+/*
+  RestPersistance Adapter
+*/
 
 MooModel.RestPersistence = {
   create: function(resource, callback){

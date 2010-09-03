@@ -1,3 +1,7 @@
+/*
+  MooModel.Validations.Inclusion
+*/
+
 MooModel.Validations.Inclusion = new Class({
   initialize: function(object){
     this.object = object;
@@ -11,3 +15,4 @@ MooModel.Validations.Inclusion = new Class({
       this.object.errors.add(validation.attribute, (validation.message || 'is not allowed'), {});
   }
 });
+

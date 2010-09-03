@@ -4,18 +4,27 @@
  *  Released under MIT license.
  */
 
+if (typeof MooModel == "undefined"){
+  var MooModel = {};
+};
+
+MooModel = new Class({
+  Implements: [Events, Options],
+  options: {
+  },
+  initialize: function(){
+  }
+});
+
 /*
+MooModel Dependency
+
 Script: ObservableHash.js
   A Hash, but observable!
 
-License:
-  MIT-style license.
+License: MIT-style license.
 
-Copyright:
-  Copyright (c) 2008 [Thomas Aylott](http://subtlegradient.com).
-
-*/
-
+Copyright: Copyright (c) 2008 [Thomas Aylott](http://subtlegradient.com). */
 
 (function(){
 
@@ -49,17 +58,16 @@ Copyright:
 
   this.HashClass = HashClass;
 })();
+
 /*
-Script: ObservableData.js
+  MooModel Dependency
+
+  Script: ObservableData.js
   A bunch of methods that you can implement on your own classes that provide a standard interface to Observable classes.
 
-License:
-  MIT-style license.
+License: MIT-style license.
 
-Copyright:
-  Copyright (c) 2008 [Thomas Aylott](http://subtlegradient.com).
-
-*/
+Copyright: Copyright (c) 2008 [Thomas Aylott](http://subtlegradient.com). */
 
 var ObservableData = {
 
@@ -121,26 +129,33 @@ var ObservableData = {
     return this.addEvent('erase:'+key, fn)
   }
 };
+
 /*
-Script: ObservableHash.js
-	A Hash, but observable!
+  MooModel Dependency
+  Script: ObservableHash.js
+  A Hash, but observable!
 
-License:
-	MIT-style license.
+License: MIT-style license.
 
-Copyright:
-	Copyright (c) 2008 [Thomas Aylott](http://subtlegradient.com).
+Copyright: Copyright (c) 2008 [Thomas Aylott](http://subtlegradient.com).
 
 */
 
 
 var ObservableHash = new Class({
 
-	Extends:HashClass,
-	Implements:Events
+  Extends:HashClass,
+  Implements:Events
 
 });
 ObservableHash.implement(ObservableData);
+
+
+/*
+  MooTools Extends mutator
+
+  Override MooTools Extends mutator to provide classmethods inheritance
+*/
 
 Class.Mutators.Extends = function(parent){
   this.parent = parent;
@@ -155,28 +170,19 @@ Class.Mutators.Extends = function(parent){
   this.extend(parent.__classMethods);
 };
 
+/*
+  ClassMethods Mutator
+  Provides easy syntax for ClassMethods declaration
+*/
+
 Class.Mutators.ClassMethods = function(methods){
   this.__classMethods = $extend(this.__classMethods || {}, methods);
   this.extend(methods);
 };
 
-/*  mooModel JavaScript library, version 0.0.1
- *  (c) 2010 Anup Narkhede, Richard Hooker
- *
- *  Released under MIT license.
- */
-if (typeof MooModel == "undefined"){
-  var MooModel = {};
-};
+/*
+  MooModel Dependency
 
-MooModel = new Class({
-  Implements: [Events, Options],
-  options: {
-  },
-  initialize: function(){
-  }
-})
-/**
  * A port of the Rails/ActiveSupport Inflector class
  * http://api.rubyonrails.org/classes/ActiveSupport/Inflector.html
  */
@@ -402,6 +408,10 @@ underscore = function (word) {
 dash = dasherize = function (word) {
     return split(word, "-").toLowerCase();
 }
+
+/*
+ Instance Methods
+*/
 MooModel.InstanceMethods = {
   initialize: function(attrs){
     this.attributes = new ObservableHash(attrs);
@@ -514,6 +524,10 @@ MooModel.InstanceMethods = {
     }
   }
 };
+/*
+ Collection Methods
+*/
+
 MooModel.CollectionMethods = {
   collection: [],
   add: function(object){
@@ -575,13 +589,20 @@ MooModel.CollectionMethods = {
     return this.addEvent('remove', callback);
   }
 }
+
+/*
+  Persistance Mutator to attach a persistance object
+*/
 Class.Mutators.Persistence = function(options){
   this.model_name = options.resource_name;
   this.route = options.route;
   this.persistence = options.uses;
   this.extend(options.uses);
-}
+};
 
+/*
+  RestPersistance Adapter
+*/
 
 MooModel.RestPersistence = {
   create: function(resource, callback){
@@ -666,6 +687,10 @@ MooModel.RestPersistence = {
   }
 };
 
+/*
+  MooModel.Validations
+*/
+
 MooModel.Validations = new Class({
   errors: function(){
     this.errors = new MooModel.Errors(this);
@@ -707,6 +732,11 @@ MooModel.Validations = new Class({
     !this.valid();
   }
 });
+
+/*
+  MooModel.Validations.Presence
+*/
+
 MooModel.Validations.Presence = new Class({
   initialize: function(object){
     this.object = object;
@@ -721,6 +751,11 @@ MooModel.Validations.Presence = new Class({
     }
   }
 });
+
+/*
+  MooModel.Validations.Numericality
+*/
+
 MooModel.Validations.Numericality = new Class({
   initialize: function(object){
     this.object = object;
@@ -732,6 +767,11 @@ MooModel.Validations.Numericality = new Class({
       this.object.errors.add(validation.attribute, (validation.message || 'should be a number'), {});
   }
 });
+
+/*
+  MooModel.Validations.Custom
+*/
+
 MooModel.Validations.Custom = new Class({
   initialize: function(object){
     this.object = object;
@@ -746,6 +786,11 @@ MooModel.Validations.Custom = new Class({
     }
   }
 });
+
+/*
+  MooModel.Validations.Within
+*/
+
 MooModel.Validations.Within = new Class({
   initialize: function(object){
     this.object = object;
@@ -759,6 +804,11 @@ MooModel.Validations.Within = new Class({
       this.object.errors.add(validation.attribute, (validation.message || 'out of range'), {});
   }
 });
+
+/*
+  MooModel.Validations.Length
+*/
+
 MooModel.Validations.Length = new Class({
   initialize: function(object){
     this.object = object;
@@ -785,6 +835,11 @@ MooModel.Validations.Length = new Class({
     }
   }
 });
+
+/*
+  MooModel.Validations.Inclusion
+*/
+
 MooModel.Validations.Inclusion = new Class({
   initialize: function(object){
     this.object = object;
@@ -798,6 +853,11 @@ MooModel.Validations.Inclusion = new Class({
       this.object.errors.add(validation.attribute, (validation.message || 'is not allowed'), {});
   }
 });
+
+/*
+  MooModel.Validations.Exclusion
+*/
+
 MooModel.Validations.Exclusion = new Class({
   initialize: function(object){
     this.object = object;
@@ -812,10 +872,20 @@ MooModel.Validations.Exclusion = new Class({
   }
 });
 
+
+/*
+  Validations mutator
+*/
+
 Class.Mutators.Validations = function(validations){
   this.validations = (this.validations || []).extend(validations);
   this.implement(validations);
 };
+
+/*
+  MooModel.Errors
+*/
+
 MooModel.Errors = new Class({
   initialize: function(model){
     this.errors = {};
@@ -858,9 +928,14 @@ MooModel.Errors = new Class({
   empty: function(){
     return this.size() == 0
   }
-})
+});
+/*
+  MooModel.Base
+*/
+
 MooModel.Base = new Class({
   Implements: [MooModel.Validations, MooModel.InstanceMethods],
   ClassMethods: $merge(Events.prototype, MooModel.CollectionMethods),
   Validations: {}
 });
+

@@ -1,4 +1,6 @@
-/**
+/*
+  MooModel Dependency
+
  * A port of the Rails/ActiveSupport Inflector class
  * http://api.rubyonrails.org/classes/ActiveSupport/Inflector.html
  */

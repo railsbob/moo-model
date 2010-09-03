@@ -1,3 +1,7 @@
+/*
+  MooModel.Validations.Within
+*/
+
 MooModel.Validations.Within = new Class({
   initialize: function(object){
     this.object = object;
@@ -11,3 +15,4 @@ MooModel.Validations.Within = new Class({
       this.object.errors.add(validation.attribute, (validation.message || 'out of range'), {});
   }
 });
+

@@ -1,6 +1,7 @@
-// Helper: ObservableData
+/*
+  MooModel Dependency
 
-/* Script: ObservableData.js
+  Script: ObservableData.js
   A bunch of methods that you can implement on your own classes that provide a standard interface to Observable classes.
 
 License: MIT-style license.

@@ -1,3 +1,7 @@
+/*
+  MooModel.Validations.Numericality
+*/
+
 MooModel.Validations.Numericality = new Class({
   initialize: function(object){
     this.object = object;
@@ -9,3 +13,4 @@ MooModel.Validations.Numericality = new Class({
       this.object.errors.add(validation.attribute, (validation.message || 'should be a number'), {});
   }
 });
+

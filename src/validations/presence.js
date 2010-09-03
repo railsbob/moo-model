@@ -1,3 +1,7 @@
+/*
+  MooModel.Validations.Presence
+*/
+
 MooModel.Validations.Presence = new Class({
   initialize: function(object){
     this.object = object;
@@ -12,3 +16,4 @@ MooModel.Validations.Presence = new Class({
     }
   }
 });
+

@@ -1,3 +1,7 @@
+/*
+  MooModel.Validations.Length
+*/
+
 MooModel.Validations.Length = new Class({
   initialize: function(object){
     this.object = object;
@@ -24,3 +28,4 @@ MooModel.Validations.Length = new Class({
     }
   }
 });
+

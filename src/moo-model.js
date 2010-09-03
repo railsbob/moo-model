@@ -4,13 +4,13 @@
  *  Released under MIT license.
  */
 
+//= require "mooModel"
 //= require "helpers/HashClass"
 //= require "helpers/ObservableData"
 //= require "helpers/ObservableHash"
 
 //= require "extendsMutator"
 //= require "classMethodMutator"
-//= require "mooModel"
 //= require "helpers/inflection"
 //= require "instanceMethods"
 //= require "collectionMethods"

@@ -1,4 +1,9 @@
-// Override MooTools Extends mutator to provide classmethods inheritance
+/*
+  MooTools Extends mutator
+
+  Override MooTools Extends mutator to provide classmethods inheritance
+*/
+
 Class.Mutators.Extends = function(parent){
   this.parent = parent;
   this.prototype = Class.instantiate(parent);

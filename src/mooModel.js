@@ -1,4 +1,3 @@
-// MooModel class
 if (typeof MooModel == "undefined"){
   var MooModel = {};
 };

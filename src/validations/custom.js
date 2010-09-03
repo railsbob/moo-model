@@ -1,3 +1,7 @@
+/*
+  MooModel.Validations.Custom
+*/
+
 MooModel.Validations.Custom = new Class({
   initialize: function(object){
     this.object = object;
@@ -12,3 +16,4 @@ MooModel.Validations.Custom = new Class({
     }
   }
 });
+

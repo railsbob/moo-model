@@ -1,4 +1,7 @@
-// Validations Class
+/*
+  MooModel.Validations
+*/
+
 MooModel.Validations = new Class({
   errors: function(){
     this.errors = new MooModel.Errors(this);
