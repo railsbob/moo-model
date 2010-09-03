@@ -8,6 +8,7 @@ MooModel is a javascript framework based on top of mootools to facilitate object
 * Observable Hash as attributes
 * Dirty attributes
 * Validations
+* REST Persistence
 
 For further information and documentation, refer to the introductory post on my blog.
 
