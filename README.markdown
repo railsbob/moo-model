@@ -1,5 +1,15 @@
 # MooModel
 
+MooModel is a javascript framework based on top of mootools to facilitate object oriented development in Javascript. It makes use of mootools classes and provide additional features like:
+
+* Classes and Inheritance
+* Class methods
+* Subclassing and Mixins
+* Observable Hash as attributes
+* Dirty attributes
+* Validations
+
+For further information and documentation, refer to the introductory post on my blog.
 
 ## Testing ##
 
@@ -7,7 +17,7 @@ Requires gem sinatra, json.
 
 ruby test/app.rb
 
-In a web browser, hit http://localhost:4567/
+In your browser see the tests passing at http://localhost:4567/
 
 ##Bugs and Feedback##
 
