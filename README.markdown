@@ -10,9 +10,15 @@ MooModel is a javascript framework based on top of mootools to facilitate object
 * Validations
 * REST Persistence
 
-For further information and documentation, refer to the [introductory post on my blog](http://www.anup.info/2010/09/05/introducing-moomodel/).
+For further information and documentation, refer the [introductory post on my blog](http://www.anup.info/2010/09/05/introducing-moomodel/).
 
-## Testing ##
+## Usage ##
+
+* require mootools
+* require moo-model
+* start using
+
+## Tests ##
 
 Requires gem sinatra, json.
 
